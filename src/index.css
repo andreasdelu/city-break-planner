@@ -1,0 +1,49 @@
+@font-face {
+	font-family: "visit-denmark";
+	src: local("VisitDenmark-Bold"),
+		url("./font/VisitDenmark-Bold.otf") format("opentype");
+	font-weight: 400;
+}
+@font-face {
+	font-family: "visit-denmark";
+	src: local("VisitDenmark-ExtraBold"),
+		url("./font/VisitDenmark-ExtraBold.otf") format("opentype");
+	font-weight: 500;
+}
+@font-face {
+	font-family: "visit-denmark";
+	src: local("VisitDenmark-Medium"),
+		url("./font/VisitDenmark-Medium.otf") format("opentype");
+	font-weight: 200;
+}
+@font-face {
+	font-family: "visit-denmark-outline";
+	src: local("VisitDenmark-Outline-Medium"),
+		url("./font/VisitDenmark-Outline-Medium.otf") format("opentype");
+	font-weight: 200;
+}
+@font-face {
+	font-family: "visit-denmark-outline";
+	src: local("VisitDenmark-Outline-Regular"),
+		url("./font/VisitDenmark-Outline-Regular.otf") format("opentype");
+	font-weight: 100;
+}
+@font-face {
+	font-family: "visit-denmark";
+	src: local("VisitDenmark-Regular"),
+		url("./font/VisitDenmark-Regular.otf") format("opentype");
+	font-weight: 100;
+}
+@font-face {
+	font-family: "visit-denmark";
+	src: local("VisitDenmark-SemiBold"),
+		url("./font/VisitDenmark-SemiBold.otf") format("opentype");
+	font-weight: 300;
+}
+
+body {
+	margin: 0;
+	font-family: "visit-denmark";
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
