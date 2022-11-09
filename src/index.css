@@ -41,9 +41,22 @@
 	font-weight: 300;
 }
 
+:root {
+	--red: #e70013;
+	--grey: #a1a8ad;
+	--lightgrey: #c3d2d3;
+}
+
 body {
 	margin: 0;
 	font-family: "visit-denmark";
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+	font-weight: 200;
+	font-size: 0.8rem;
 }

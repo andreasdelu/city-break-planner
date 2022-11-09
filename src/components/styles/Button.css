@@ -1,0 +1,20 @@
+.buttonContainer {
+	background-color: var(--grey);
+	width: 100%;
+	cursor: pointer;
+}
+
+.buttonCTA {
+	background-color: var(--red) !important;
+}
+
+.buttonText {
+	padding: 1.5rem 1.5rem;
+	color: white;
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	justify-content: space-between;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+}
