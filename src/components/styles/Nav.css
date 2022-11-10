@@ -1,11 +1,11 @@
 #burgerMenu {
 	position: fixed;
-	bottom: 1rem;
-	right: 1rem;
+	bottom: 1.5rem;
+	right: 1.5rem;
 	color: white;
 	z-index: 999;
-	width: 60px;
-	height: 60px;
+	width: 45px;
+	height: 45px;
 	display: grid;
 	place-items: center;
 	border-radius: 50%;
@@ -13,7 +13,7 @@
 }
 
 .burger {
-	font-size: 2rem;
+	font-size: 1.5rem;
 }
 
 #navBar {
@@ -32,18 +32,18 @@
 .navBG {
 	background-color: var(--red);
 	border-radius: 50%;
-	width: 60px;
+	width: 300vw;
 	aspect-ratio: 1;
 	position: absolute;
-	bottom: 1rem;
-	right: 1rem;
-	transform: scale(1);
+	bottom: 1.5rem;
+	right: 1.5rem;
+	transform: scale(1) translate(50%, 50%);
 	transition: 0.3s ease;
 	pointer-events: none;
 }
 
 .showNavBG {
-	transform: scale(15);
+	transform: scale(18);
 }
 
 .navBarContainer {

@@ -1,7 +1,12 @@
 import React from "react";
 import "./styles/Button.css";
 
-export default function Button({ onClick, cta = false, text = "", icon = "" }) {
+export default function Button({
+	onClick = () => {},
+	cta = false,
+	text = "",
+	icon = "",
+}) {
 	return (
 		<div
 			onClick={onClick}

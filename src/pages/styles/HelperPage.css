@@ -1,0 +1,109 @@
+.helperButtons {
+	width: 300px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+	margin-top: 2rem;
+	gap: 1.5rem;
+	z-index: 2;
+	position: relative;
+}
+
+.pageHelper {
+	box-sizing: border-box;
+	padding-top: 8vh;
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+	background-position: center;
+	background-color: #19181e;
+	transition: transform 0.3s ease;
+	translate: 120%;
+	animation: animIn 0.3s ease forwards;
+}
+
+@keyframes animIn {
+	to {
+		translate: 0%;
+	}
+}
+
+.nextPage {
+	transform: translateX(-120%);
+}
+
+.helperTitle {
+	color: white;
+	z-index: 2;
+	position: relative;
+}
+
+.stepIndicator {
+	position: absolute;
+	z-index: 10;
+	width: 70%;
+	top: 2rem;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.indicatorBG {
+	height: 5px;
+	width: 100%;
+	background-color: white;
+
+	position: absolute;
+	border-radius: 999px;
+}
+
+.indicatorLine {
+	background-color: var(--red);
+	height: 100%;
+	width: 0%;
+	isolation: isolate;
+	z-index: 1;
+	transition: width 0.3s;
+	border-radius: 999px;
+}
+
+.indicatorCircle {
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;
+	background-color: white;
+	isolation: isolate;
+	z-index: 2;
+	transition: 0.2s;
+	position: relative;
+}
+
+.indicatorCircle::after {
+	content: "";
+	height: 100%;
+	width: 0;
+	transition: width 0.1s;
+}
+
+.circleRed::after {
+	background-color: var(--red) !important;
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	border-radius: 50%;
+}
+
+.circleText {
+	position: absolute;
+	left: 50%;
+	bottom: -1.3rem;
+	font-size: 0.7rem;
+	text-align: center;
+	transform: translateX(-50%);
+	color: white;
+	opacity: 0.3;
+}
