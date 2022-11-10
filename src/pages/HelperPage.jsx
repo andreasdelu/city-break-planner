@@ -6,7 +6,15 @@ import cph from "../assets/cph1.jpeg";
 import aarhus from "../assets/aarhus2.jpeg";
 import aalborg from "../assets/aalborg1.jpeg";
 import odense from "../assets/odense1.jpeg";
+import art from "../assets/art.jpg";
+import eating from "../assets/eating.jpg";
+import events from "../assets/events.jpg";
+import nightlife from "../assets/nightlife.jpg";
 import ImageButton from "../components/ImageButton";
+import { Link } from "react-router-dom";
+import Carrousel from "../components/Carrousel";
+
+import { getPlacesFromCategory, getAllPlaces } from "../services/datafetcher";
 
 export default function HelperPage() {
 	const [pageIndex, setpageIndex] = useState(0);
@@ -16,13 +24,48 @@ export default function HelperPage() {
 	const [activity, setActivity] = useState("");
 	const [people, setPeople] = useState("");
 
+	const [loading, setLoading] = useState(false);
+
+	const [places, setPlaces] = useState([]);
+
 	const MAX_STEPS = 3;
 
 	const BUTTON_HEIGHT = "100px";
 
 	useEffect(() => {
-		console.log(city);
-	}, [city]);
+		if (loading) {
+			getPlaces();
+		}
+	}, [loading]);
+
+	async function getPlaces() {
+		let id;
+		switch (activity) {
+			case "Food & Drinks":
+				id = 62;
+				break;
+			case "Events":
+				id = 58;
+				break;
+			case "Nightlife":
+				id = 58;
+				break;
+			case "Art":
+				id = 3;
+				break;
+
+			default:
+				break;
+		}
+		const places = await getPlacesFromCategory(id);
+		const allplaces = await getAllPlaces();
+		setTimeout(() => {
+			console.log(allplaces);
+			setPlaces(places);
+			setLoading(false);
+			nextPage(4);
+		}, 500);
+	}
 
 	function nextPage(pageNum) {
 		const page = document.querySelector(".pageHelper");
@@ -32,11 +75,23 @@ export default function HelperPage() {
 		};
 		indicatorRef.current.ontransitionend = () => {
 			setcircleIndex(pageNum);
+			if (pageNum === 3) {
+				setLoading(true);
+				const indi = document.querySelector(".stepIndicator");
+				indi.ontransitionend = () => {
+					setTimeout(() => {
+						indi.style.display = "none";
+					}, 500);
+				};
+				setTimeout(() => {
+					indi.classList.add("hideIndicator");
+				}, 300);
+			}
 		};
 	}
 
 	return (
-		<>
+		<div id='mainContent'>
 			<div className='stepIndicator'>
 				<div className='indicatorBG'>
 					<div
@@ -76,7 +131,9 @@ export default function HelperPage() {
 					className={
 						circleIndex >= 2 ? "indicatorCircle circleRed" : "indicatorCircle"
 					}>
-					<div className='circleText'>{people ? people : "People"}</div>
+					<div className='circleText'>
+						{people ? people + " People" : "People"}
+					</div>
 				</div>
 				<div
 					onClick={() => {
@@ -86,7 +143,9 @@ export default function HelperPage() {
 					}}
 					className={
 						circleIndex >= 3 ? "indicatorCircle circleRed" : "indicatorCircle"
-					}></div>
+					}>
+					<div className='circleText'>{"Done"}</div>
+				</div>
 			</div>
 			{pageIndex === 0 && (
 				<div
@@ -130,7 +189,7 @@ export default function HelperPage() {
 							}}
 						/>
 						<ImageButton
-							subText='Capital of North Jutland'
+							subText='Denmarks northern capital'
 							text='Aalborg'
 							height={BUTTON_HEIGHT}
 							image={aalborg}
@@ -154,40 +213,40 @@ export default function HelperPage() {
 					</h1>
 					<div className='helperButtons'>
 						<ImageButton
-							subText='Big city, big adventures'
-							text='Eating'
+							subText='Danish couisine when it´s best'
+							text='Food & Drinks'
 							height={BUTTON_HEIGHT}
-							image={cph}
+							image={eating}
 							onClick={() => {
-								setActivity("Eating");
+								setActivity("Food & Drinks");
 								nextPage(2);
 							}}
 						/>
 						<ImageButton
-							subText='City of smiles'
+							subText='Party with the happiest people in the world'
 							text='Nightlife'
 							height={BUTTON_HEIGHT}
-							image={aarhus}
+							image={nightlife}
 							onClick={() => {
 								setActivity("Nightlife");
 								nextPage(2);
 							}}
 						/>
 						<ImageButton
-							subText='Hometown of H.C. Andersen'
+							subText='Experience exciting events'
 							text='Events'
 							height={BUTTON_HEIGHT}
-							image={odense}
+							image={events}
 							onClick={() => {
 								setActivity("Events");
 								nextPage(2);
 							}}
 						/>
 						<ImageButton
-							subText='Capital of North Jutland'
-							text='Art'
+							subText='Take in danish and international culture'
+							text='Attractions'
 							height={BUTTON_HEIGHT}
-							image={aalborg}
+							image={art}
 							onClick={() => {
 								setActivity("Art");
 								nextPage(2);
@@ -207,32 +266,77 @@ export default function HelperPage() {
 					</h1>
 					<div className='helperButtons'>
 						<ImageButton
-							subText='Big city, big adventures'
-							text='Copenhagen'
+							subText='Activities for you and a friend'
+							text='1-2 People'
 							height={BUTTON_HEIGHT}
 							image={cph}
+							onClick={() => {
+								setPeople("1-2");
+								nextPage(3);
+							}}
 						/>
 						<ImageButton
-							subText='City of smiles'
-							text='Aarhus'
+							subText='Activities for your friendgroup'
+							text='3-5 People'
 							height={BUTTON_HEIGHT}
 							image={aarhus}
+							onClick={() => {
+								setPeople("3-5");
+								nextPage(3);
+							}}
 						/>
 						<ImageButton
-							subText='Hometown of H.C. Andersen'
-							text='Odense'
+							subText='Activities to entertain a small crowd'
+							text='6-8 People'
 							height={BUTTON_HEIGHT}
 							image={odense}
+							onClick={() => {
+								setPeople("6-8");
+								nextPage(3);
+							}}
 						/>
 						<ImageButton
-							subText='Capital of North Jutland'
-							text='Aalborg'
+							subText='Activities for a pack of people'
+							text='9+ People'
 							height={BUTTON_HEIGHT}
 							image={aalborg}
+							onClick={() => {
+								setPeople("9+");
+								nextPage(3);
+							}}
 						/>
 					</div>
 				</div>
 			)}
-		</>
+			{pageIndex <= 2 && <Link to={"/"}>Cancel</Link>}
+			{pageIndex === 3 && (
+				<div className='pageHelper' id='page3'>
+					<h1 className='siteTitle helperTitle'>
+						We are looking for <span className='highlight'>{activity}</span>{" "}
+						activities for{" "}
+						<span style={{ whiteSpace: "nowrap" }} className='highlight'>
+							{people + " People"}
+						</span>{" "}
+						in <span className='highlight'>{city}</span>...
+					</h1>
+				</div>
+			)}
+			{pageIndex === 4 && (
+				<div className='pageHelper' id='donePage'>
+					<h1 className='siteTitle helperTitle'>
+						Results for <span className='highlight'>{activity}</span> activities
+						for{" "}
+						<span style={{ whiteSpace: "nowrap" }} className='highlight'>
+							{people + " People"}
+						</span>{" "}
+						in <span className='highlight'>{city}</span>!
+					</h1>
+					<Carrousel />
+					{places.map((place, i) => (
+						<p key={i}>{place.Name}</p>
+					))}
+				</div>
+			)}
+		</div>
 	);
 }

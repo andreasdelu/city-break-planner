@@ -4,18 +4,26 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import IntroPage from "./pages/IntroPage";
 import HelperPage from "./pages/HelperPage";
+import MainLayout from "./layouts/MainLayout";
 
 function App() {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition((pos) =>
+			console.log("Location enabled")
+		);
+	} else {
+		console.log("Location not supported or denied by user");
+	}
 	return (
-		<div id='mainContent'>
-			<BrowserRouter>
-				<Routes>
-					<Route path='/' element={<IntroPage />} />
-					<Route path='/home' element={<HomePage />} />
-					<Route path='/helper' element={<HelperPage />} />
-				</Routes>
-			</BrowserRouter>
-		</div>
+		<BrowserRouter>
+			<Routes>
+				<Route path='/helper' element={<HelperPage />} />
+				<Route path='/' element={<IntroPage />} />
+				<Route path='/' element={<MainLayout />}>
+					<Route path='home' element={<HomePage />} />
+				</Route>
+			</Routes>
+		</BrowserRouter>
 	);
 }
 

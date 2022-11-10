@@ -32,12 +32,12 @@
 .navBG {
 	background-color: var(--red);
 	border-radius: 50%;
-	width: 300vw;
+	width: 45px;
 	aspect-ratio: 1;
 	position: absolute;
 	bottom: 1.5rem;
 	right: 1.5rem;
-	transform: scale(1) translate(50%, 50%);
+	transform: scale(1);
 	transition: 0.3s ease;
 	pointer-events: none;
 }

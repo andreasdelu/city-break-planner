@@ -1,12 +1,15 @@
 .imageButtonContainer {
 	width: 100%;
-	background-color: var(--grey);
+	min-height: 100px;
+	height: 13vh !important;
+	max-height: 120px;
 	overflow: hidden;
 	position: relative;
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
+	cursor: pointer;
 }
 
 .imageButtonImage {
