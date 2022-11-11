@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import IntroPage from "./pages/IntroPage";
 import HelperPage from "./pages/HelperPage";
 import MainLayout from "./layouts/MainLayout";
+import PlacePage from "./pages/PlacePage";
 
 function App() {
 	if (navigator.geolocation) {
@@ -21,6 +22,7 @@ function App() {
 				<Route path='/' element={<IntroPage />} />
 				<Route path='/' element={<MainLayout />}>
 					<Route path='home' element={<HomePage />} />
+					<Route path=':placeId' element={<PlacePage />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>

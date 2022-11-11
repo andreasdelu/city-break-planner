@@ -10,6 +10,7 @@
 	place-items: center;
 	border-radius: 50%;
 	background-color: var(--red);
+	cursor: pointer;
 }
 
 .burger {

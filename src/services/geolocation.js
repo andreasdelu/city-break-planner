@@ -1,14 +1,3 @@
-function getCoords() {
-	if (navigator.geolocation) {
-		navigator.geolocation.getCurrentPosition((pos) => {
-			return pos.coords;
-		});
-	} else {
-		console.log("Location not supported or denied by user");
-		return null;
-	}
-}
-
 function getDistance(lat1, lon1, lat2, lon2, unit) {
 	var radlat1 = (Math.PI * lat1) / 180;
 	var radlat2 = (Math.PI * lat2) / 180;
@@ -28,5 +17,7 @@ function getDistance(lat1, lon1, lat2, lon2, unit) {
 	if (unit === "N") {
 		dist = dist * 0.8684;
 	}
-	return Math.round(dist * 1000) / 1000;
+	return (Math.round(dist * 1000) / 1000).toFixed(1);
 }
+
+export { getDistance };

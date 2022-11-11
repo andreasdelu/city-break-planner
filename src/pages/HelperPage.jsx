@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import Carrousel from "../components/Carrousel";
 
 import { getPlacesFromCategory, getAllPlaces } from "../services/datafetcher";
+import { getCoords } from "../services/geolocation";
 
 export default function HelperPage() {
 	const [pageIndex, setpageIndex] = useState(0);
@@ -23,6 +24,7 @@ export default function HelperPage() {
 	const [city, setCity] = useState("");
 	const [activity, setActivity] = useState("");
 	const [people, setPeople] = useState("");
+	const [userCoords, setUserCoords] = useState({});
 
 	const [loading, setLoading] = useState(false);
 
@@ -31,6 +33,16 @@ export default function HelperPage() {
 	const MAX_STEPS = 3;
 
 	const BUTTON_HEIGHT = "100px";
+
+	useEffect(() => {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition((pos) => {
+				setUserCoords({ lat: pos.coords.latitude, lon: pos.coords.longitude });
+			});
+		} else {
+			console.log("Location not supported or denied by user");
+		}
+	}, []);
 
 	useEffect(() => {
 		if (loading) {
@@ -60,7 +72,6 @@ export default function HelperPage() {
 		const places = await getPlacesFromCategory(id);
 		const allplaces = await getAllPlaces();
 		setTimeout(() => {
-			console.log(allplaces);
 			setPlaces(places);
 			setLoading(false);
 			nextPage(4);
@@ -208,8 +219,8 @@ export default function HelperPage() {
 					id='page1'>
 					{/* <div className='backgroundOverlay'></div> */}
 					<h1 className='siteTitle helperTitle'>
-						What <span className='highlight'>activity</span> are <br /> you
-						looking for?
+						What <span className='highlight'>activity</span> are you looking
+						for?
 					</h1>
 					<div className='helperButtons'>
 						<ImageButton
@@ -331,10 +342,7 @@ export default function HelperPage() {
 						</span>{" "}
 						in <span className='highlight'>{city}</span>!
 					</h1>
-					<Carrousel />
-					{places.map((place, i) => (
-						<p key={i}>{place.Name}</p>
-					))}
+					<Carrousel userCoords={userCoords} places={places} />
 				</div>
 			)}
 		</div>
