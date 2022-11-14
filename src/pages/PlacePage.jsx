@@ -104,6 +104,42 @@ export default function PlacePage() {
 									</div>
 								)}
 							</div>
+							<div className='placePageContact'>
+								<p style={{ fontWeight: "400" }}>Contact:</p>
+								<p className='p-container'>
+									Phone:{" "}
+									{placeData.contact.phone ? (
+										<a href={`tel:${placeData.contact.phone}`}>
+											{placeData.contact.phone}
+										</a>
+									) : (
+										"None"
+									)}
+								</p>
+								<p className='p-container'>
+									Email:{" "}
+									{placeData.contact.email ? (
+										<a href={`mailto:${placeData.contact.email}`}>
+											{placeData.contact.email}
+										</a>
+									) : (
+										<p style={{ opacity: 0.3 }}>None</p>
+									)}
+								</p>
+								<p className='p-container'>
+									Website:{" "}
+									{placeData.contact.url ? (
+										<a
+											href={placeData.contact.url}
+											target='_blank'
+											rel='noreferrer'>
+											{placeData.contact.url}
+										</a>
+									) : (
+										<p style={{ opacity: 0.3 }}>None</p>
+									)}
+								</p>
+							</div>
 							<div className='placePageLocation'>
 								<p style={{ fontWeight: "400" }}>Address:</p>
 								<p className='placePageAddress'>

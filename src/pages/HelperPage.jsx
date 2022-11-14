@@ -10,6 +10,10 @@ import art from "../assets/art.jpg";
 import eating from "../assets/eating.jpg";
 import events from "../assets/events.jpg";
 import nightlife from "../assets/nightlife.jpg";
+import people1 from "../assets/1-2/1-2.jpg";
+import people2 from "../assets/3-5/3-5.jpg";
+import people3 from "../assets/6-8/6-8.jpg";
+import people4 from "../assets/9+/9+.jpg";
 import ImageButton from "../components/ImageButton";
 import { Link, useNavigate } from "react-router-dom";
 import Carrousel from "../components/Carrousel";
@@ -279,7 +283,7 @@ export default function HelperPage() {
 							subText='Activities for you and a friend'
 							text='1-2 People'
 							height={BUTTON_HEIGHT}
-							image={cph}
+							image={people1}
 							onClick={() => {
 								setPeople("1-2");
 								nextPage(3);
@@ -289,7 +293,7 @@ export default function HelperPage() {
 							subText='Activities for your friendgroup'
 							text='3-5 People'
 							height={BUTTON_HEIGHT}
-							image={aarhus}
+							image={people2}
 							onClick={() => {
 								setPeople("3-5");
 								nextPage(3);
@@ -299,7 +303,7 @@ export default function HelperPage() {
 							subText='Activities to entertain a small crowd'
 							text='6-8 People'
 							height={BUTTON_HEIGHT}
-							image={odense}
+							image={people3}
 							onClick={() => {
 								setPeople("6-8");
 								nextPage(3);
@@ -309,7 +313,7 @@ export default function HelperPage() {
 							subText='Activities for a pack of people'
 							text='9+ People'
 							height={BUTTON_HEIGHT}
-							image={aalborg}
+							image={people4}
 							onClick={() => {
 								setPeople("9+");
 								nextPage(3);

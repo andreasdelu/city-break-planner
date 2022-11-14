@@ -27,18 +27,20 @@ export default function Carrousel({ userCoords = "", places = [] }) {
 	useEffect(() => {
 		let allIds = [];
 		let allCategories = [];
-		places.forEach((place) => {
-			if (!allIds.includes(place.category.Id)) {
-				allIds.push(place.category.Id);
-				allCategories.push({
-					id: place.category.Id,
-					name: place.category.Name,
-				});
-			}
-		});
-		setCategories(allCategories);
-		setChosenCategory(0);
-		loadPlacesWithCategory(allCategories[0].id);
+		if (places.length) {
+			places.forEach((place) => {
+				if (!allIds.includes(place.category.Id)) {
+					allIds.push(place.category.Id);
+					allCategories.push({
+						id: place.category.Id,
+						name: place.category.Name,
+					});
+				}
+			});
+			setCategories(allCategories);
+			setChosenCategory(0);
+			loadPlacesWithCategory(allCategories[0].id);
+		}
 	}, [places]);
 
 	useEffect(() => {}, [categories]);
@@ -61,6 +63,7 @@ export default function Carrousel({ userCoords = "", places = [] }) {
 	return (
 		<div className='carrousel'>
 			<div ref={catRef} className='categoryCarrousel'>
+				{!categories.length && <div className='loadingCategories'></div>}
 				{categories.map((category, i) => (
 					<p
 						onClick={(e) => {
@@ -83,7 +86,15 @@ export default function Carrousel({ userCoords = "", places = [] }) {
 				))}
 			</div>
 			<div ref={placesRef} className='placesCarrousel'>
-				{filteredPlaces.length === 0 && <Loading />}
+				{filteredPlaces.length === 0 && (
+					<>
+						<div className='carrouselItem carrouselLoading'></div>
+						<div className='carrouselItem carrouselLoading'></div>
+						<div className='carrouselItem carrouselLoading'></div>
+						<div className='carrouselItem carrouselLoading'></div>
+					</>
+				)}
+
 				{filteredPlaces.map((place) => (
 					<div
 						onClick={() => navigate("/" + place.id)}

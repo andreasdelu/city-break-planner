@@ -63,11 +63,13 @@
 .homeCategoryPicked {
 	background-color: #34323f;
 	border-radius: 999px;
+	font-weight: 400 !important;
 }
 
 .closestWrap {
 	margin-top: 1rem;
 	max-width: 100%;
+	width: 100%;
 }
 
 .allPlacesWrap {

@@ -18,7 +18,14 @@ export default function CarrouselSmall({ userCoords = "", placesArray = [] }) {
 	return (
 		<div className='carrouselSmall'>
 			<div ref={placesRef} className='placesCarrouselSmall'>
-				{places.length === 0 && <Loading />}
+				{places.length === 0 && (
+					<>
+						<div className='carrouselItemSmall carrouselLoading'></div>
+						<div className='carrouselItemSmall carrouselLoading'></div>
+						<div className='carrouselItemSmall carrouselLoading'></div>
+						<div className='carrouselItemSmall carrouselLoading'></div>
+					</>
+				)}
 				{places.map((place) => (
 					<div
 						onClick={() => navigate("/" + place.id)}
