@@ -40,7 +40,10 @@ export default function Nav() {
 						<FontAwesomeIcon className='navItem' icon={faHouse} />
 						<p>Home</p>
 					</Link>
-					<Link onClick={() => setShowNav(false)} className='navItemContainer'>
+					<Link
+						onClick={() => setShowNav(false)}
+						to={"/favorites"}
+						className='navItemContainer'>
 						<FontAwesomeIcon className='navItem' icon={faHeart} />
 						<p>Favorites</p>
 					</Link>

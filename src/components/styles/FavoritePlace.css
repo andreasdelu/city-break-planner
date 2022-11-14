@@ -1,0 +1,54 @@
+.favoritePlaceContainer {
+	width: calc(100% - 2rem);
+	height: 100px;
+	margin: 1rem auto;
+	overflow: hidden;
+	border-radius: 10px;
+	background-color: #292730;
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	text-decoration: none;
+	text-align: left;
+}
+
+.favoriteImage {
+	height: 100%;
+	object-fit: cover;
+	aspect-ratio: 1;
+	border-radius: 10px;
+}
+
+.favoriteInfo {
+	overflow: hidden;
+}
+
+.favoriteInfo p {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.favoriteName {
+	font-size: 1rem;
+	font-weight: 400;
+}
+
+.likeFavorite {
+	text-align: center;
+	display: grid;
+	place-items: center;
+	width: 30px;
+	margin-left: auto;
+	margin-right: 1rem;
+	height: 100%;
+	font-size: 1.6rem;
+	color: var(--red);
+}
+
+.favoriteLoading {
+	background: linear-gradient(90deg, #27262d, #3f3e45, #27262d);
+	background-repeat: repeat-x;
+	background-size: 200%;
+	animation: loading 2s linear infinite forwards;
+}

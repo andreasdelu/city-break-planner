@@ -7,6 +7,7 @@ import HelperPage from "./pages/HelperPage";
 import MainLayout from "./layouts/MainLayout";
 import PlacePage from "./pages/PlacePage";
 import HelperFilteredPage from "./pages/HelperFilteredPage";
+import Favorites from "./pages/Favorites";
 
 function App() {
 	const [userCoords, setUserCoords] = useState("");
@@ -21,6 +22,7 @@ function App() {
 			console.log("Location not supported or denied by user");
 		}
 	}, []);
+
 	return (
 		<BrowserRouter>
 			<Routes>
@@ -33,6 +35,10 @@ function App() {
 				<Route path='/' element={<MainLayout />}>
 					<Route path='home' element={<HomePage userCoords={userCoords} />} />
 					<Route path=':placeId' element={<PlacePage />} />
+					<Route
+						path='favorites'
+						element={<Favorites userCoords={userCoords} />}
+					/>
 				</Route>
 			</Routes>
 		</BrowserRouter>

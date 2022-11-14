@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 
 export default function Header({ show = true }) {
@@ -12,7 +13,9 @@ export default function Header({ show = true }) {
 	}, [show]);
 	return (
 		<header ref={headerRef} className='header'>
-			<img className='logo' src={logo} alt='logo' />
+			<Link to={"/home"}>
+				<img className='logo' src={logo} alt='logo' />
+			</Link>
 		</header>
 	);
 }

@@ -105,6 +105,9 @@
 	max-width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	font-weight: 200;
+	color: white;
+	padding: 0.25rem 0;
 }
 
 .placePageLocation {
@@ -140,4 +143,20 @@
 	left: 1rem;
 	color: white;
 	filter: drop-shadow(0 0 10px black);
+}
+
+.interactions {
+	position: absolute;
+	top: -2.5rem;
+	right: 1rem;
+}
+
+.likePlace {
+	font-size: 2rem;
+	color: white;
+	filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.47));
+}
+
+.liked {
+	color: var(--red);
 }

@@ -1,4 +1,8 @@
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+	faChevronLeft,
+	faHeart,
+	faShare,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
@@ -10,6 +14,16 @@ import "./styles/PlacePage.css";
 export default function PlacePage() {
 	const { placeId } = useParams();
 	const [placeData, setPlaceData] = useState(null);
+	const [isLiked, setIsLiked] = useState(checkLiked);
+
+	function checkLiked() {
+		if (localStorage.getItem("liked")) {
+			const likes = localStorage.getItem("liked");
+			if (likes.includes(placeId)) {
+				return true;
+			} else return false;
+		} else return false;
+	}
 
 	useEffect(() => {
 		async function getPlace() {
@@ -18,6 +32,27 @@ export default function PlacePage() {
 		}
 		getPlace();
 	}, [placeId]);
+
+	function likePlace() {
+		if (localStorage.getItem("liked")) {
+			let likes = JSON.parse(localStorage.getItem("liked"));
+			if (likes.includes(placeId)) {
+				likes = likes.filter((like) => like !== placeId);
+				localStorage.setItem("liked", JSON.stringify(likes));
+				setIsLiked(false);
+			} else {
+				likes.push(placeId);
+				localStorage.setItem("liked", JSON.stringify(likes));
+				setIsLiked(true);
+			}
+		} else {
+			let likes = [];
+			likes.push(placeId);
+			localStorage.setItem("liked", JSON.stringify(likes));
+			setIsLiked(true);
+		}
+	}
+
 	return (
 		<>
 			{!placeData && <Loading />}
@@ -48,6 +83,13 @@ export default function PlacePage() {
 							)}
 						</div>
 						<div className='placePageContent'>
+							<div className='interactions'>
+								<FontAwesomeIcon
+									onClick={likePlace}
+									className={isLiked ? "likePlace liked" : "likePlace"}
+									icon={faHeart}
+								/>
+							</div>
 							<h2 className='placePageName'>{placeData.name}</h2>
 							<div className='openingsContainer'>
 								{placeData.openings ? (
@@ -106,7 +148,7 @@ export default function PlacePage() {
 							</div>
 							<div className='placePageContact'>
 								<p style={{ fontWeight: "400" }}>Contact:</p>
-								<p className='p-container'>
+								<div className='p-container'>
 									Phone:{" "}
 									{placeData.contact.phone ? (
 										<a href={`tel:${placeData.contact.phone}`}>
@@ -115,8 +157,8 @@ export default function PlacePage() {
 									) : (
 										"None"
 									)}
-								</p>
-								<p className='p-container'>
+								</div>
+								<div className='p-container'>
 									Email:{" "}
 									{placeData.contact.email ? (
 										<a href={`mailto:${placeData.contact.email}`}>
@@ -125,8 +167,8 @@ export default function PlacePage() {
 									) : (
 										<p style={{ opacity: 0.3 }}>None</p>
 									)}
-								</p>
-								<p className='p-container'>
+								</div>
+								<div className='p-container'>
 									Website:{" "}
 									{placeData.contact.url ? (
 										<a
@@ -138,7 +180,7 @@ export default function PlacePage() {
 									) : (
 										<p style={{ opacity: 0.3 }}>None</p>
 									)}
-								</p>
+								</div>
 							</div>
 							<div className='placePageLocation'>
 								<p style={{ fontWeight: "400" }}>Address:</p>
