@@ -25,24 +25,30 @@ export default function Nav() {
 					<FontAwesomeIcon className='burger' icon={faBars} />
 				)}
 			</div>
+			{showNav && (
+				<div onClick={() => setShowNav(false)} className='clickBG'></div>
+			)}
 			<div className={showNav ? "" : "hideNavBar"} id='navBar'>
 				<div className={showNav ? "navBG showNavBG" : "navBG"}></div>
 
 				<div
 					className={showNav ? "navBarContainer showNav" : "navBarContainer"}>
-					<Link to={"/home"} className='navItemContainer'>
+					<Link
+						onClick={() => setShowNav(false)}
+						to={"/home"}
+						className='navItemContainer'>
 						<FontAwesomeIcon className='navItem' icon={faHouse} />
 						<p>Home</p>
 					</Link>
-					<Link className='navItemContainer'>
+					<Link onClick={() => setShowNav(false)} className='navItemContainer'>
 						<FontAwesomeIcon className='navItem' icon={faHeart} />
 						<p>Favorites</p>
 					</Link>
-					<Link className='navItemContainer'>
+					<Link onClick={() => setShowNav(false)} className='navItemContainer'>
 						<FontAwesomeIcon className='navItem' icon={faRoute} />
 						<p>Planner</p>
 					</Link>
-					<Link className='navItemContainer'>
+					<Link onClick={() => setShowNav(false)} className='navItemContainer'>
 						<FontAwesomeIcon className='navItem' icon={faCog} />
 						<p>Settings</p>
 					</Link>
