@@ -45,6 +45,7 @@
 	--red: #e70013;
 	--grey: #a1a8ad;
 	--lightgrey: #c3d2d3;
+	--dark: #19181e;
 	overflow-x: hidden;
 }
 
@@ -53,7 +54,7 @@ body {
 	font-family: "visit-denmark";
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-color: rgb(25, 24, 30);
+	background-color: var(--dark);
 	width: 100vw;
 	overflow: hidden;
 }

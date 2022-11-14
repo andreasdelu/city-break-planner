@@ -4,6 +4,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import introVid from "../assets/intro.mp4";
 import logo from "../assets/VDHvid.png";
+import planmate from "../assets/logo.svg";
 import Button from "../components/Button";
 import "./styles/IntroPage.css";
 
@@ -19,8 +20,9 @@ export default function IntroPage() {
 			<div id='introContent'>
 				<div className='introHeader'>
 					<h1 className='introTitle'>
-						Welcome to <br /> PLANMATE
+						Welcome to <br />
 					</h1>
+					<img className='introLogo' src={planmate} alt='logo' />
 					<p>by</p>
 					<img src={logo} alt='logo' />
 				</div>
@@ -35,7 +37,6 @@ export default function IntroPage() {
 					/>
 					<Button
 						onClick={function () {
-							console.log("click");
 							navigate("/home");
 						}}
 						text="I'll explore on my own"

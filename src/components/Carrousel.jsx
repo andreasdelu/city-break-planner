@@ -3,6 +3,7 @@ import "./styles/Carrousel.css";
 
 import { getDistance } from "../services/geolocation";
 import { useNavigate } from "react-router-dom";
+import Loading from "./Loading";
 
 export default function Carrousel({ userCoords = "", places = [] }) {
 	const [categories, setCategories] = useState([]);
@@ -38,7 +39,7 @@ export default function Carrousel({ userCoords = "", places = [] }) {
 		setCategories(allCategories);
 		setChosenCategory(0);
 		loadPlacesWithCategory(allCategories[0].id);
-	}, []);
+	}, [places]);
 
 	useEffect(() => {}, [categories]);
 
@@ -82,6 +83,7 @@ export default function Carrousel({ userCoords = "", places = [] }) {
 				))}
 			</div>
 			<div ref={placesRef} className='placesCarrousel'>
+				{filteredPlaces.length === 0 && <Loading />}
 				{filteredPlaces.map((place) => (
 					<div
 						onClick={() => navigate("/" + place.id)}

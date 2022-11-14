@@ -11,7 +11,7 @@ import eating from "../assets/eating.jpg";
 import events from "../assets/events.jpg";
 import nightlife from "../assets/nightlife.jpg";
 import ImageButton from "../components/ImageButton";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Carrousel from "../components/Carrousel";
 
 import { getPlacesFromCategory, getAllPlaces } from "../services/datafetcher";
@@ -33,6 +33,8 @@ export default function HelperPage() {
 	const MAX_STEPS = 3;
 
 	const BUTTON_HEIGHT = "100px";
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (navigator.geolocation) {
@@ -59,8 +61,8 @@ export default function HelperPage() {
 			case "Events":
 				id = 58;
 				break;
-			case "Nightlife":
-				id = 58;
+			case "Activities":
+				id = 36;
 				break;
 			case "Art":
 				id = 3;
@@ -69,13 +71,10 @@ export default function HelperPage() {
 			default:
 				break;
 		}
-		const places = await getPlacesFromCategory(id);
-		const allplaces = await getAllPlaces();
 		setTimeout(() => {
-			setPlaces(places);
 			setLoading(false);
-			nextPage(4);
-		}, 500);
+			navigate(`/${id}/${city}/${activity}/${people}`);
+		}, 800);
 	}
 
 	function nextPage(pageNum) {
@@ -234,12 +233,12 @@ export default function HelperPage() {
 							}}
 						/>
 						<ImageButton
-							subText='Party with the happiest people in the world'
-							text='Nightlife'
+							subText='Exciting things to do in Denmark'
+							text='Activities'
 							height={BUTTON_HEIGHT}
 							image={nightlife}
 							onClick={() => {
-								setActivity("Nightlife");
+								setActivity("Activities");
 								nextPage(2);
 							}}
 						/>
