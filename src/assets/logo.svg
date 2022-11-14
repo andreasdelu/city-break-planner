@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="962.266" height="196.35" viewBox="0 0 962.266 196.35">
+  <defs>
+    <filter id="Icon_ionic-ios-pin" x="399.688" y="0" width="143.075" height="196.35" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Group_1863" data-name="Group 1863" transform="translate(-1706.775 1125)">
+    <path id="Path_811" data-name="Path 811" d="M-167.7,0V-25.437h16.958c26.41,0,43.229-13.9,43.229-35.862,0-22.1-16.819-36-43.229-36h-44.48V0Zm0-75.616h15.29c11.259,0,17.1,5.282,17.1,14.317s-5.838,14.178-17.1,14.178H-167.7ZM-93.617,0h73.948V-21.823H-66.094V-97.3H-93.617ZM9.243,0l7.645-18.9H58.033L65.678,0H94.312L51.221-97.3h-27.1L-18.835,0ZM24.951-39.2,37.46-70.334,49.971-39.2ZM102.652,0h26.966V-51.847L172.569,0h22.657V-97.3H168.26v51.847L125.309-97.3H102.652Z" transform="translate(1902 -951)" fill="#fff"/>
+    <g transform="matrix(1, 0, 0, 1, 1706.77, -1125)" filter="url(#Icon_ionic-ios-pin)">
+      <path id="Icon_ionic-ios-pin-2" data-name="Icon ionic-ios-pin" d="M61.009,176.247C27.327,176.247,0,150.87,0,119.6,0,75.541,61.009,0,61.009,0s61.009,75.541,61.009,119.6C122.017,150.87,94.691,176.247,61.009,176.247Zm0-80.879a19.87,19.87,0,1,0,19.87,19.87A19.871,19.871,0,0,0,61.009,95.368Z" transform="translate(530.69 184.35) rotate(-179)" fill="#d81623"/>
+    </g>
+    <path id="Path_810" data-name="Path 810" d="M-177.433,0V-50.179l24.881,40.588h12.232l25.02-41.978L-115.022,0h25.3L-90-97.3h-22.657l-33.36,56.156L-180.214-97.3H-202.87V0ZM-53.306,0l7.645-18.9H-4.517L3.128,0H31.762l-43.09-97.3h-27.1L-81.384,0ZM-37.6-39.2l12.51-31.136L-12.579-39.2ZM30.928-75.477H60.813V0H88.335V-75.477h29.746V-97.3H30.928ZM128.923,0h78.118V-21.267H156.167V-39.059H199.4V-59.631H156.167v-16.4h49.067V-97.3H128.923Z" transform="translate(2462 -951)" fill="#fff"/>
+  </g>
+</svg>
